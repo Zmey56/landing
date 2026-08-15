@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Информатика от инженера — ЕГЭ-2027, ОГЭ, Python | Александр Гладких</title>
+<meta name="description" content="Подготовка к ЕГЭ-2027 и ОГЭ по информатике, Python для школьников. Преподаёт действующий senior-инженер. Бесплатная диагностика 30 минут.">
+<link rel="canonical" href="https://gladkikh.dev/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gladkikh.dev/">
+<meta property="og:title" content="Информатика от инженера — ЕГЭ-2027, ОГЭ, Python">
+<meta property="og:description" content="Готовлю школьников к ЕГЭ и ОГЭ по информатике, учу Python. Действующий senior-инженер. Первая диагностика — бесплатно.">
+<meta property="og:site_name" content="gladkikh.dev">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=PT+Sans:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16243a;        /* глубокий синий — текст */
+    --paper:#f7f8f6;      /* фон страницы */
+    --editor:#1e2733;     /* тёмное окно редактора */
+    --py-blue:#3572a5;    /* синий Python — акцент/ссылки */
+    --marker:#ffd343;     /* жёлтый Python — маркер */
+    --muted:#5b6activi778;
+  }
+  :root{--muted:#5b6778;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"PT Sans",system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;font-size:17px}
+  h1,h2{font-family:"Unbounded",sans-serif;line-height:1.15;font-weight:700}
+  h1{font-size:clamp(1.7rem,4.5vw,2.9rem)}
+  h2{font-size:clamp(1.25rem,3vw,1.8rem);margin-bottom:.9em}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+  mark{background:linear-gradient(transparent 55%,var(--marker) 55%);padding:0 .1em}
+  a{color:var(--py-blue)}
+  .btn{display:inline-block;background:var(--py-blue);color:#fff;text-decoration:none;font-weight:700;
+       padding:14px 28px;border-radius:10px;transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(53,114,165,.35)}
+  .btn:focus-visible{outline:3px solid var(--marker);outline-offset:3px}
+  .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+  section{padding:64px 0}
+  /* ---------- HERO ---------- */
+  .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center;padding:72px 0 56px}
+  .hero p.lead{font-size:1.15rem;margin:18px 0 26px;max-width:34em}
+  .eyebrow{font-family:"JetBrains Mono",monospace;font-size:.8rem;letter-spacing:.08em;color:var(--py-blue);text-transform:uppercase}
+  /* окно редактора */
+  .editor{background:var(--editor);border-radius:14px;box-shadow:0 18px 50px rgba(22,36,58,.28);overflow:hidden}
+  .editor-bar{display:flex;gap:7px;padding:11px 14px;background:#151c26}
+  .editor-bar i{width:11px;height:11px;border-radius:50%;background:#3a4656;display:block}
+  .editor pre{font-family:"JetBrains Mono",monospace;font-size:.82rem;line-height:1.65;color:#dbe4ee;
+              padding:18px 20px 22px;overflow-x:auto;white-space:pre}
+  .editor .cm{color:#7d8da1}.editor .kw{color:#7fb4e8}.editor .st{color:#ffd343}.editor .out{color:#8ef0b6}
+  .caret{display:inline-block;width:9px;height:1.05em;background:var(--marker);vertical-align:text-bottom;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media (prefers-reduced-motion:reduce){.caret{animation:none}}
+  /* ---------- ФАКТЫ ---------- */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .fact{background:#fff;border:1px solid #e3e7e2;border-radius:14px;padding:26px 24px}
+  .fact b{font-family:"Unbounded";font-size:1.05rem;display:block;margin-bottom:.5em}
+  .seal{background:var(--ink);color:#f2f5f9;grid-column:1/-1;border:none}
+  .seal b{color:var(--marker)}
+  /* ---------- ШАГИ ---------- */
+  .steps{counter-reset:s;display:grid;gap:16px}
+  .step{background:#fff;border:1px solid #e3e7e2;border-radius:14px;padding:20px 22px 20px 66px;position:relative}
+  .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;left:20px;top:20px;
+    font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--py-blue)}
+  .step b{display:block;margin-bottom:.25em}
+  /* ---------- ЦЕНЫ ---------- */
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #e3e7e2}
+  th,td{padding:14px 18px;text-align:left;border-bottom:1px solid #eef0ec}
+  th{font-family:"JetBrains Mono",monospace;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  tr:last-child td{border-bottom:none}
+  td.pr{font-weight:700;white-space:nowrap}
+  /* ---------- FAQ ---------- */
+  details{background:#fff;border:1px solid #e3e7e2;border-radius:12px;padding:16px 20px;margin-bottom:12px}
+  summary{cursor:pointer;font-weight:700}
+  details p{margin-top:10px;color:var(--muted)}
+  /* ---------- CTA ---------- */
+  .cta{background:var(--editor);color:#f2f5f9;border-radius:20px;padding:52px 40px;text-align:center}
+  .cta h2{color:#fff}
+  .cta p{max-width:38em;margin:0 auto 26px;color:#c4cedb}
+  footer{padding:34px 0 46px;color:var(--muted);font-size:.9rem}
+  @media(max-width:840px){
+    .hero{grid-template-columns:1fr;padding-top:48px}
+    .facts{grid-template-columns:1fr}
+    section{padding:46px 0}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <span class="eyebrow">ЕГЭ-2027 · ОГЭ · Python · онлайн</span>
+      <h1>Информатика от инженера, который <mark>пишет код каждый день</mark></h1>
+      <p class="lead">Готовлю школьников к ЕГЭ и ОГЭ по информатике и учу программировать по-настоящему.
+      Половину заданий экзамена мы решаем кодом — быстрее и надёжнее, чем вручную.</p>
+      <a class="btn" href="https://t.me/USERNAME">Записаться на бесплатную диагностику</a>
+      <p style="margin-top:12px;font-size:.9rem;color:var(--muted)">30 минут · онлайн · вы получите честную карту знаний ребёнка и план</p>
+    </div>
+    <div class="editor" aria-label="Пример: задание ЕГЭ решается пятью строками кода">
+      <div class="editor-bar"><i></i><i></i><i></i></div>
+      <pre><span class="cm"># Задание 2 ЕГЭ: таблица истинности</span>
+<span class="kw">for</span> a <span class="kw">in</span> range(2):
+ <span class="kw">for</span> b <span class="kw">in</span> range(2):
+  <span class="kw">for</span> c <span class="kw">in</span> range(2):
+   <span class="kw">if</span> (<span class="kw">not</span> a <span class="kw">or</span> b) == (c <span class="kw">and</span> a):
+    print(a, b, c)
+
+<span class="out">>>> ответ найден за 0.02 секунды</span> <span class="caret"></span></pre>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ПОЧЕМУ ================= -->
+<section>
+  <div class="wrap">
+    <h2>Почему это работает</h2>
+    <div class="facts">
+      <div class="fact"><b>5 лет в продакшене</b>
+        Senior backend-инженер: высоконагруженные финансовые системы на Go и Python. На занятиях — живой код и реальные инженерные привычки, а не пересказ учебника.</div>
+      <div class="fact"><b>Педагог по образованию</b>
+        Преподавательская квалификация (ПетрГУ), аспирантура, 30+ научных публикаций, дополнительное образование в области психологии подростка.</div>
+      <div class="fact"><b>ИИ — инструмент, не костыль</b>
+        Интегрирую большие языковые модели в реальные продукты. Научу ребёнка использовать нейросети для учёбы — так, чтобы на экзамене голова работала без них.</div>
+      <div class="fact seal"><b>Необычный факт: 9 лет я обучал морских млекопитающих</b>
+        В научном институте, профессионально. Тюленя нельзя заставить — его можно только заинтересовать. Так я освоил методику положительного подкрепления: сложный навык делится на достижимые шаги, каждый успех закрепляется, ошибки не наказываются, и каждое занятие заканчивается победой. С подростками это работает точно так же.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= КАК ПРОХОДИТ ================= -->
+<section>
+  <div class="wrap">
+    <h2>Как устроена подготовка</h2>
+    <div class="steps">
+      <div class="step"><b>Диагностика — бесплатно, 30 минут</b>
+        Проверяю уровень по ключевым типам заданий, говорим с ребёнком и с вами. Вы получаете письменно: где ребёнок сейчас, какой балл реален и маршрут к нему.</div>
+      <div class="step"><b>Персональный план по всем 27 заданиям</b>
+        Готовлю по актуальной спецификации ЕГЭ-2027 и отслеживаю изменения ФИПИ. Новое задание 27 — анализ данных: это моя профессиональная область.</div>
+      <div class="step"><b>Занятия с живым кодом + трекер прогресса</b>
+        Онлайн, общий экран. По каждому типу заданий виден статус: освоено, в работе, впереди. Тренируемся на эмуляторе реальной экзаменационной станции.</div>
+      <div class="step"><b>Отчёт родителям после каждого занятия</b>
+        Коротко: что прошли, что получается, что дальше. Вы всегда знаете, за что платите.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ЦЕНЫ ================= -->
+<section>
+  <div class="wrap">
+    <h2>Форматы и цены</h2>
+    <table>
+      <tr><th>Занятие</th><th>Формат</th><th>Цена</th></tr>
+      <tr><td>Диагностика (первая встреча)</td><td>30 мин · онлайн</td><td class="pr">бесплатно</td></tr>
+      <tr><td>Подготовка к ЕГЭ-2027</td><td>60 мин · онлайн</td><td class="pr">2 500 ₽</td></tr>
+      <tr><td>Подготовка к ОГЭ</td><td>60 мин · онлайн</td><td class="pr">2 000 ₽</td></tr>
+      <tr><td>Python для школьников</td><td>60 мин · онлайн</td><td class="pr">2 000 ₽</td></tr>
+      <tr><td>Олимпиадная подготовка</td><td>60 мин · онлайн</td><td class="pr">3 000 ₽</td></tr>
+    </table>
+    <p style="margin-top:12px;font-size:.9rem;color:var(--muted)">Для семей за пределами России возможна оплата в валюте. Первые ученики сезона занимаются по стартовой цене — уточняйте.</p>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section>
+  <div class="wrap">
+    <h2>Частые вопросы</h2>
+    <details><summary>С какого класса можно начинать?</summary>
+      <p>Основной профиль — 8–11 классы. Оптимально начинать подготовку к ЕГЭ в 10 классе, к ОГЭ — в 8–9. Python «с нуля» — с 7 класса.</p></details>
+    <details><summary>Мы не в России — вы работаете с другими часовыми поясами?</summary>
+      <p>Да, значительная часть учеников — русскоязычные семьи за пределами РФ (Грузия, Кипр, Сербия, ОАЭ и другие). Подберём удобное время, оплата возможна в валюте.</p></details>
+    <details><summary>Ребёнок «не мотивирован» — возьмётесь?</summary>
+      <p>Это моя специализация. Методика положительного подкрепления построена именно для таких случаев: начинаем с достижимых побед, и интерес появляется вслед за успехом.</p></details>
+    <details><summary>Что если нужен не экзамен, а «просто программирование»?</summary>
+      <p>Отлично: учу Python как в реальной разработке — проекты, код-ревью, инженерные привычки. Экзамен при желании подключим позже.</p></details>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section>
+  <div class="wrap">
+    <div class="cta">
+      <h2>Начнём с бесплатной диагностики</h2>
+      <p>30 минут онлайн: проверю уровень, отвечу на вопросы и пришлю письменный план — где ребёнок сейчас и как дойти до цели. Без обязательств.</p>
+      <a class="btn" href="https://t.me/USERNAME">Написать в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Александр Гладких · информатика: ЕГЭ-2027, ОГЭ, Python · занятия онлайн<br>
+    gladkikh.dev · Telegram: <a href="https://t.me/USERNAME">@USERNAME</a> · Профи.ру и Авито — по запросу пришлю ссылки на анкеты
+  </div>
+</footer>
+
+</body>
+</html>
