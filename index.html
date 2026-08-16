@@ -38,6 +38,10 @@
        padding:14px 28px;border-radius:10px;transition:transform .15s,box-shadow .15s}
   .btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(53,114,165,.35)}
   .btn:focus-visible{outline:3px solid var(--marker);outline-offset:3px}
+  .btnrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .btn.alt{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+  .btn.alt:hover{box-shadow:0 6px 18px rgba(22,36,58,.2)}
+  .btn.sm{padding:12px 20px;font-size:.95rem}
   .btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
   section{padding:64px 0}
   /* ---------- HERO ---------- */
@@ -110,7 +114,11 @@
       <h1>Информатика от инженера, который <mark>пишет код каждый день</mark></h1>
       <p class="lead">Готовлю школьников к ЕГЭ и ОГЭ по информатике и учу программировать по-настоящему.
       Половину заданий экзамена мы решаем кодом — быстрее и надёжнее, чем вручную.</p>
-      <a class="btn" href="https://t.me/Aleks_Glad">Записаться на бесплатную диагностику</a>
+      <div class="btnrow">
+        <a class="btn" href="https://max.ru/u/f9LHodD0cOJBxAyYubqd_e6ALEtHO19NcclJoQRWf1iODhovQ9t5Eb3sYME">Написать в MAX</a>
+        <a class="btn alt sm" href="https://t.me/Aleks_Glad">Telegram</a>
+        <a class="btn alt sm" href="mailto:alex@gladkikh.dev">Почта</a>
+      </div>
       <p style="margin-top:12px;font-size:.9rem;color:var(--muted)">60 минут · онлайн · вы получите честную карту знаний ребёнка и план</p>
     </div>
     <div class="editor" aria-label="Пример: задание ЕГЭ решается пятью строками кода">
@@ -198,7 +206,11 @@
     <div class="cta">
       <h2>Начнём с бесплатной диагностики</h2>
       <p>60 минут онлайн: проверю уровень, отвечу на вопросы и пришлю письменный план — где ребёнок сейчас и как дойти до цели. Без обязательств.</p>
-      <a class="btn" href="https://t.me/Aleks_Glad">Написать в Telegram</a>
+      <div class="btnrow" style="justify-content:center">
+        <a class="btn" href="https://max.ru/u/f9LHodD0cOJBxAyYubqd_e6ALEtHO19NcclJoQRWf1iODhovQ9t5Eb3sYME">Написать в MAX</a>
+        <a class="btn alt sm" href="https://t.me/Aleks_Glad">Telegram</a>
+        <a class="btn alt sm" href="mailto:alex@gladkikh.dev">alex@gladkikh.dev</a>
+      </div>
     </div>
   </div>
 </section>
@@ -206,7 +218,7 @@
 <footer>
   <div class="wrap">
     Александр Гладких · информатика: ЕГЭ-2027, ОГЭ, Python · занятия онлайн<br>
-    gladkikh.dev · Telegram: <a href="https://t.me/Aleks_Glad">@Aleks_Glad</a> · Профи.ру и Авито — по запросу пришлю ссылки на анкеты
+    gladkikh.dev · <a href="https://max.ru/u/f9LHodD0cOJBxAyYubqd_e6ALEtHO19NcclJoQRWf1iODhovQ9t5Eb3sYME">MAX</a> · Telegram: <a href="https://t.me/Aleks_Glad">@Aleks_Glad</a> · <a href="mailto:alex@gladkikh.dev">alex@gladkikh.dev</a> · Профи.ру и Авито — по запросу пришлю ссылки на анкеты
   </div>
 </footer>
 
